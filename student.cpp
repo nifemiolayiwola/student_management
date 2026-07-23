@@ -1,4 +1,8 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <limits>
+
 using namespace std;
 
 class Student {
@@ -16,7 +20,6 @@ class Student {
             cin >> id;
             cin.ignore(); 
             
-            // Ignore the newline character left in the buffer
             cout << "Student Name: \n";
             getline(cin, name);
             
@@ -60,6 +63,14 @@ class Student {
         }
 
     void saveStudent()
+    {
+        ofstream file("students.txt", ios::app);
+
+        file << id << "," << name << "," << age << "," << department << "," << cgpa << endl;
+        file.close();
+    }
+
+    void displayStudent()
     {
         
     }
