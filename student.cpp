@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class Student {
+class Student 
+{
     private:
         int id;
         string name;
@@ -31,7 +32,7 @@ class Student {
 
                 if(age > 0)
                 {
-                    return age;
+                    break;
                 }
                 else
                 {
@@ -53,7 +54,7 @@ class Student {
 
                 if(cgpa >= 0.0 && cgpa <= 4.0)
                 {
-                    return cgpa;
+                    break;
                 }
                 else
                 {
@@ -64,25 +65,23 @@ class Student {
             }
         }
 
-    void saveStudent()
-    {
-        ofstream file("students.txt", ios::app);
+        void saveStudent()
+        {
+            ofstream file("students.txt", ios::app);
 
-        file << id << " " << name << " " << age << " " << department << " " << cgpa << endl;
-        file.close();
-    }
+            file << id << " " << name << " " << age << " " << department << " " << cgpa << endl;
+            file.close();
+        }
 
-    void displayStudent()
-    {
-        cout << left << setw(10) << id
-             << setw(20) << name
-             << setw(10) << age
-             << setw(20) << department
-             << setw(10) << cgpa << endl;
-    }
+        void displayStudent()
+        {
+            cout << left << setw(10) << id
+                << setw(20) << name
+                << setw(10) << age
+                << setw(20) << department
+                << setw(10) << cgpa << endl;
+        }
 
        
-    }
+};
         
-
-}
