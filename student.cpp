@@ -9,25 +9,25 @@ using namespace std;
 class Student 
 {
     private:
-        int id;
+        string id;
         string name;
         int age;
         string department;
         double cgpa;
 
     public:
-        void addStuddent()
+        void addStudent()
         {
             cout << "Student ID: ";
             cin >> id;
             cin.ignore(); 
             
-            cout << "Student Name: \n";
+            cout << "Student Name: ";
             getline(cin, name);
             
             while(true)
             {
-                cout << "Student Age: \n";
+                cout << "Student Age: ";
                 cin >> age;
 
                 if(age > 0)
@@ -68,8 +68,13 @@ class Student
         void saveStudent()
         {
             ofstream file("students.txt", ios::app);
+            if (!file)
+            {
+                cout << "Error opening file." << endl;
+                return;
+            }
 
-            file << id << " " << name << " " << age << " " << department << " " << cgpa << endl;
+            file << id << "|" << name << "|" << age << "|" << department << "|" << cgpa << endl;
             file.close();
         }
 

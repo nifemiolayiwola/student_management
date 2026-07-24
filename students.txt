@@ -1,0 +1,3 @@
+0001|Nifemi Sam|18|Animal Science|3.7
+0002|Sam Jude|15|Finance|2.9
+0003|Ruby James|20|Pharmacy|3.4

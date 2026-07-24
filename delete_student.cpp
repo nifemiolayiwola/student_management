@@ -2,44 +2,73 @@
 #include <fstream>
 
 using namespace std;
+
 void deleteStudent()
 {
-    int deleteId;
+    string deleteId;
+
     cout << "Enter the student ID to delete: ";
     cin >> deleteId;
+
 
     ifstream file("students.txt");
     ofstream tempFile("temp.txt");
 
-    int id;
+
+    string id;
     string name;
-    int age;
+    string age;
     string department;
-    double cgpa;
+    string cgpa;
+
 
     bool found = false;
 
-    while(file >> id >> name >> age >> department >> cgpa)
+
+    while(getline(file, id, '|'))
     {
+        getline(file, name, '|');
+        getline(file, age, '|');
+        getline(file, department, '|');
+        getline(file, cgpa);
+
+
         if(id == deleteId)
         {
             found = true;
-            cout << "Student with ID " << deleteId << " deleted successfully!" << endl;
+
+            cout << "Student with ID "
+                 << deleteId
+                 << " deleted successfully!"
+                 << endl;
+
+            continue; // do not copy this student
         }
-        else
-        {
-            tempFile << id << " " << name << " " << age << " " << department << " " << cgpa << endl;
-        }
+
+
+        tempFile << id << "|"
+                 << name << "|"
+                 << age << "|"
+                 << department << "|"
+                 << cgpa << endl;
     }
 
-    if(!found)
-    {
-        cout << "Student with ID " << deleteId << " not found." << endl;
-    }
 
     file.close();
     tempFile.close();
 
+
+
     remove("students.txt");
     rename("temp.txt", "students.txt");
+
+
+
+    if(!found)
+    {
+        cout << "Student with ID "
+             << deleteId
+             << " not found."
+             << endl;
+    }
 }

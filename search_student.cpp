@@ -5,36 +5,43 @@ using namespace std;
 
 void searchStudent()
 {
-    int searchId;
+    string searchId;
+
     cout << "Enter the student ID to search: ";
     cin >> searchId;
 
     ifstream file("students.txt");
 
-    int id;
+    string id;
     string name;
-    int age;
+    string age;
     string department;
-    double cgpa;
-    
+    string cgpa;
+
     bool found = false;
 
-    while(file >> id >> name >> age >> department >> cgpa)
+    while (getline(file, id, '|'))
     {
-        if(id == searchId)
+        getline(file, name, '|');
+        getline(file, age, '|');
+        getline(file, department, '|');
+        getline(file, cgpa);
+
+        if (id == searchId)
         {
-            cout << "Student found!" << endl;
+            cout << "\nStudent Found!\n";
             cout << "ID: " << id << endl;
             cout << "Name: " << name << endl;
             cout << "Age: " << age << endl;
             cout << "Department: " << department << endl;
             cout << "CGPA: " << cgpa << endl;
+
             found = true;
             break;
         }
     }
 
-    if(!found)
+    if (!found)
     {
         cout << "Student not found." << endl;
     }
