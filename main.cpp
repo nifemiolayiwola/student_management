@@ -7,13 +7,13 @@ void searchStudent();
 void updateStudent();
 void deleteStudent();
 
-int main
+int main()
 {
     int choice;
 
     do
     {
-        cout << "Student Management System" << endl;
+        cout << "\n===== Student Management System =====" << endl;
         cout << "1. Add Student" << endl;
         cout << "2. View Students" << endl;
         cout << "3. Search Student" << endl;
@@ -28,27 +28,32 @@ int main
             case 1:
                 addStudent();
                 break;
+
             case 2:
                 viewStudent();
                 break;
+
             case 3:
                 searchStudent();
                 break;
+
             case 4:
                 updateStudent();
                 break;
+
             case 5:
                 deleteStudent();
                 break;
+
             case 6:
-                cout << "Student data saved to file." << endl;
-            case 7:
-                cout << "Exiting the program." << endl;
+                cout << "Exiting the program..." << endl;
                 break;
+
             default:
                 cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 7);
+
+    } while (choice != 6);
 
     return 0;
 }
