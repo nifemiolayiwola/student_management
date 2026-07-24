@@ -31,8 +31,42 @@ public:
 
     void addStudent()
     {
-        cout << "Student ID: ";
-        cin >> id;
+        while(true)
+        {
+            cout << "Student ID: ";
+            cin >> id;
+
+
+            ifstream file("students.txt");
+            string line;
+            bool idExists = false;
+
+            while(getline(file, line))
+            {
+                if(line.substr(0, line.find('|')) == id)
+                {
+                    idExists = true;
+                    break;
+                }
+            }
+            file.close();
+
+            if(idExists)
+            {
+                cout << "ID already exists. Please enter a unique ID." << endl;
+                continue;
+            }
+
+
+            if(!id.empty())
+            {
+                break;
+            }
+
+            cout << "Invalid ID. Please enter a valid ID." << endl;
+        }
+
+
 
         cin.ignore();
 
@@ -79,7 +113,7 @@ public:
                 break;
             }
 
-            cout << "Invalid CGPA." << endl;
+            cout << "Invalid CGPA. Please enter a value between 0 and 4." << endl;
 
         }
 
