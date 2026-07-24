@@ -20,6 +20,7 @@ void deleteStudent()
     string age;
     string department;
     string cgpa;
+    string rank;
 
 
     bool found = false;
@@ -30,7 +31,8 @@ void deleteStudent()
         getline(file, name, '|');
         getline(file, age, '|');
         getline(file, department, '|');
-        getline(file, cgpa);
+        getline(file, cgpa, '|');
+        getline(file, rank);
 
 
         if(id == deleteId)
@@ -42,7 +44,7 @@ void deleteStudent()
                  << " deleted successfully!"
                  << endl;
 
-            continue; // do not copy this student
+            continue;
         }
 
 
@@ -50,7 +52,9 @@ void deleteStudent()
                  << name << "|"
                  << age << "|"
                  << department << "|"
-                 << cgpa << endl;
+                 << cgpa << "|"
+                 << rank
+                 << endl;
     }
 
 
@@ -58,10 +62,8 @@ void deleteStudent()
     tempFile.close();
 
 
-
     remove("students.txt");
     rename("temp.txt", "students.txt");
-
 
 
     if(!found)

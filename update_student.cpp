@@ -5,6 +5,31 @@
 using namespace std;
 
 
+string calculateRank(string cgpa)
+{
+    double value = 0;
+
+
+    if(cgpa == "4" || cgpa == "4.0" || cgpa == "3.5" || cgpa == "3.6" || cgpa == "3.7" || cgpa == "3.8" || cgpa == "3.9")
+    {
+        return "Excellent";
+    }
+    else if(cgpa == "3.0" || cgpa == "3.1" || cgpa == "3.2" || cgpa == "3.3" || cgpa == "3.4")
+    {
+        return "Very Good";
+    }
+    else if(cgpa == "2.0" || cgpa == "2.1" || cgpa == "2.2" || cgpa == "2.3" || cgpa == "2.4" || cgpa == "2.5" || cgpa == "2.6" || cgpa == "2.7" || cgpa == "2.8" || cgpa == "2.9")
+    {
+        return "Good";
+    }
+    else
+    {
+        return "Average";
+    }
+}
+
+
+
 void updateStudent()
 {
     string updateId;
@@ -22,6 +47,7 @@ void updateStudent()
     string age;
     string department;
     string cgpa;
+    string rank;
 
 
     bool found = false;
@@ -33,7 +59,8 @@ void updateStudent()
         getline(file, name, '|');
         getline(file, age, '|');
         getline(file, department, '|');
-        getline(file, cgpa);
+        getline(file, cgpa, '|');
+        getline(file, rank);
 
 
 
@@ -52,37 +79,19 @@ void updateStudent()
             getline(cin, name);
 
 
-
-            while(true)
-            {
-                cout << "Student Age: ";
-                cin >> age;
-
-
-                if(age != "0")
-                {
-                    break;
-                }
-
-                else
-                {
-                    cout << "Invalid age. Age must be greater than 0." << endl;
-                }
-            }
-
-
-
-            cin.ignore();
+            cout << "Student Age: ";
+            getline(cin, age);
 
 
             cout << "Student Department: ";
             getline(cin, department);
 
 
-
             cout << "Student CGPA: ";
-            cin >> cgpa;
+            getline(cin, cgpa);
 
+
+            rank = calculateRank(cgpa);
         }
 
 
@@ -91,7 +100,9 @@ void updateStudent()
                  << name << "|"
                  << age << "|"
                  << department << "|"
-                 << cgpa << endl;
+                 << cgpa << "|"
+                 << rank
+                 << endl;
     }
 
 
@@ -115,5 +126,4 @@ void updateStudent()
 
         cout << "Student not found." << endl;
     }
-
 }
