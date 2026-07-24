@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 #include <limits>
 
 using namespace std;
@@ -40,6 +41,7 @@ class Student {
                 }
 
             }
+            cin.ignore();
         
             cout << "Student Department: ";
             getline(cin, department);
@@ -66,13 +68,17 @@ class Student {
     {
         ofstream file("students.txt", ios::app);
 
-        file << id << "," << name << "," << age << "," << department << "," << cgpa << endl;
+        file << id << " " << name << " " << age << " " << department << " " << cgpa << endl;
         file.close();
     }
 
     void displayStudent()
     {
-        
+        cout << left << setw(10) << id
+             << setw(20) << name
+             << setw(10) << age
+             << setw(20) << department
+             << setw(10) << cgpa << endl;
     }
 
        

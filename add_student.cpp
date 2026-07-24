@@ -1,4 +1,4 @@
-#include "Student.cpp"
+#include "student.cpp"
 
 void addStudent()
 {
